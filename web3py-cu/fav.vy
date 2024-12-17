@@ -17,7 +17,7 @@ interface AggregatorV3Interface:
 #storage veriable 
 
 #mim_USD: public(constant(uint256)) = as_wei_value(5, "ether") #constant are not storage vairable 
-min_USD: immutable(uint256)
+min_USD: public(constant(uint256)) = as_wei_value(5, "ether") #constant are not storage vairable
 priceFeed: public(immutable(AggregatorV3Interface))
 owner: public(immutable(address))
 funders: public(DynArray[address, 1000])
@@ -26,10 +26,9 @@ magicNumber: constant(uint256) = 1 * (10 ** 18)
 funder_to_funders: public(HashMap[address, uint256])
 
 @deploy
-def __init__(price_feed: address, _min_usd: uint256): #we can pass the address we want sapolia or any other 
+def __init__(price_feed: address): #we can pass the address we want sapolia or any other 
     priceFeed = AggregatorV3Interface(price_feed) #here we pass Sapolia 
     owner = msg.sender
-    min_USD = _min_usd
 
 @external
 @payable 
