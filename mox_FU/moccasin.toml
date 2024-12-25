@@ -1,0 +1,20 @@
+[project]
+src = "src"
+dot_env = ".env"
+
+[networks.anvil]
+url = "http://127.0.0.1:8545"
+save_to_db = false
+prompt_live = false
+default_account_name = "anvil_1"
+
+
+
+[networks.sepolia]
+url = "$SAPOLIA_RPC_URL"
+save_to_db = false
+default_account_name = "scofield"
+prompt_live = false
+explorar_type = "blockscout"
+
+# You can view all configuration options at https://cyfrin.github.io/moccasin/all_moccasin_toml_parameters.html
