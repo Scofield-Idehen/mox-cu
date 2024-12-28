@@ -4,8 +4,14 @@ from src import buy_me_a_coffee
 from script.deploy_mocks import deploy_feed
 from moccasin.boa_tools import VyperContract
 
-'''def deploy_coffee(price_feed: str):
-    buy_me_a_coffee.deploy(price_feed)'''
+def deploy_coffee(price_feed: str):
+    coffee = buy_me_a_coffee.deploy(price_feed)
+
+    active_network = get_active_network()
+    if active_network.has_explorer():
+        result = active_network.moccasin_verify(coffee)
+        result.wait_for_verification()
+    return coffee
     
     
 

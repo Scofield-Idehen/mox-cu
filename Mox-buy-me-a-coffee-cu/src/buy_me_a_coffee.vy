@@ -38,6 +38,7 @@ def _fund():
     usd_value_of_eth: uint256 = getPrice.ETH_USD(priceFeed, msg.value)
     assert usd_value_of_eth >= min_USD  #1000000000000000000 #why dont we pass the min to init?
     self.funders.append(msg.sender)
+    self.funder_to_funders[msg.sender] += msg.value
 
 @external 
 def withdraw():
